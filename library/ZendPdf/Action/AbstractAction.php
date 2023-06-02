@@ -261,7 +261,6 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
         }
     }
 
-
     ////////////////////////////////////////////////////////////////////////
     //  RecursiveIterator interface methods
     //////////////
@@ -287,17 +286,17 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
     /**
      * Go to next child
      */
-    public function next(): mixed
+    public function next(): void
     {
-        return next($this->next);
+        next($this->next);
     }
 
     /**
      * Rewind children
      */
-    public function rewind(): mixed
+    public function rewind(): void
     {
-        return reset($this->next);
+        reset($this->next);
     }
 
     /**
@@ -315,7 +314,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return \ZendPdf\Action\AbstractAction|null
      */
-    public function getChildren(): mixed
+    public function getChildren(): ?RecursiveIterator
     {
         return current($this->next);
     }
@@ -329,7 +328,6 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
     {
         return count($this->next) > 0;
     }
-
 
     ////////////////////////////////////////////////////////////////////////
     //  Countable interface methods

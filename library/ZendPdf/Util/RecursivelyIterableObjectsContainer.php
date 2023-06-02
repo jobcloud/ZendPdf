@@ -10,6 +10,8 @@
 
 namespace ZendPdf\Util;
 
+use RecursiveIterator;
+
 /**
  * Iteratable objects container
  *
@@ -35,14 +37,14 @@ class RecursivelyIterableObjectsContainer implements \RecursiveIterator, \Counta
         return key($this->_objects);
     }
 
-    public function next(): mixed
+    public function next(): void
     {
-        return next($this->_objects);
+        next($this->_objects);
     }
 
-    public function rewind(): mixed
+    public function rewind(): void
     {
-        return reset($this->_objects);
+        reset($this->_objects);
     }
 
     public function valid(): bool
@@ -50,7 +52,7 @@ class RecursivelyIterableObjectsContainer implements \RecursiveIterator, \Counta
         return current($this->_objects) !== false;
     }
 
-    public function getChildren(): mixed
+    public function getChildren(): ?RecursiveIterator
     {
         return current($this->_objects);
     }
