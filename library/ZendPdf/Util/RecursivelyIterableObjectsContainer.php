@@ -20,15 +20,48 @@ class RecursivelyIterableObjectsContainer implements \RecursiveIterator, \Counta
 {
     protected $_objects = array();
 
-    public function __construct(array $objects) { $this->_objects = $objects; }
+    public function __construct(array $objects)
+    {
+        $this->_objects = $objects;
+    }
 
-    public function current()      { return current($this->_objects);            }
-    public function key()          { return key($this->_objects);                }
-    public function next()         { return next($this->_objects);               }
-    public function rewind()       { return reset($this->_objects);              }
-    public function valid()        { return current($this->_objects) !== false;  }
-    public function getChildren()  { return current($this->_objects);            }
-    public function hasChildren()  { return count($this->_objects) > 0;          }
+    public function current(): mixed
+    {
+        return current($this->_objects);
+    }
 
-    public function count() { return count($this->_objects); }
+    public function key(): string|int|null
+    {
+        return key($this->_objects);
+    }
+
+    public function next(): mixed
+    {
+        return next($this->_objects);
+    }
+
+    public function rewind(): mixed
+    {
+        return reset($this->_objects);
+    }
+
+    public function valid(): bool
+    {
+        return current($this->_objects) !== false;
+    }
+
+    public function getChildren(): mixed
+    {
+        return current($this->_objects);
+    }
+
+    public function hasChildren(): bool
+    {
+        return count($this->_objects) > 0;
+    }
+
+    public function count(): int
+    {
+        return count($this->_objects);
+    }
 }

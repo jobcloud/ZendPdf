@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": "^8.0 || ^8.1 || ^8.2",
         "zendframework/zend-memory": ">=2.0.0",
         "zendframework/zend-stdlib": ">=2.0.0"
     },

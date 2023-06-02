@@ -54,10 +54,10 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
     /**
      * Object constructor
      *
-     * @param \ZendPdf\InternalType\DictionaryObject $dictionary
-     * @param SplObjectStorage      $processedActions  list of already processed action dictionaries,
-     *                                                 used to avoid cyclic references
      * @throws \ZendPdf\Exception\ExceptionInterface
+     * @param SplObjectStorage $processedActions list of already processed action dictionaries,
+     *                                                 used to avoid cyclic references
+     * @param \ZendPdf\InternalType\DictionaryObject $dictionary
      */
     public function __construct(InternalType\AbstractTypeObject $dictionary, \SplObjectStorage $processedActions)
     {
@@ -83,7 +83,9 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
                     }
                 }
             } else {
-                throw new Exception\CorruptedPdfException('PDF Action dictionary Next entry must be a dictionary or an array.');
+                throw new Exception\CorruptedPdfException(
+                    'PDF Action dictionary Next entry must be a dictionary or an array.'
+                );
             }
         }
 
@@ -93,11 +95,11 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
     /**
      * Load PDF action object using specified dictionary
      *
-     * @internal
-     * @param \ZendPdf\InternalType\AbstractTypeObject $dictionary (It's actually Dictionary or Dictionary Object or Reference to a Dictionary Object)
-     * @param SplObjectStorage $processedActions  list of already processed action dictionaries, used to avoid cyclic references
-     * @return \ZendPdf\Action\AbstractAction
      * @throws \ZendPdf\Exception\ExceptionInterface
+     * @param \ZendPdf\InternalType\AbstractTypeObject $dictionary (It's actually Dictionary or Dictionary Object or Reference to a Dictionary Object)
+     * @param SplObjectStorage $processedActions list of already processed action dictionaries, used to avoid cyclic references
+     * @return \ZendPdf\Action\AbstractAction
+     * @internal
      */
     public static function load(InternalType\AbstractTypeObject $dictionary, \SplObjectStorage $processedActions = null)
     {
@@ -108,7 +110,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
         if ($dictionary->getType() != InternalType\AbstractTypeObject::TYPE_DICTIONARY) {
             throw new Exception\CorruptedPdfException('$dictionary mast be a direct or an indirect dictionary object.');
         }
-        if (isset($dictionary->Type)  &&  $dictionary->Type->value != 'Action') {
+        if (isset($dictionary->Type) && $dictionary->Type->value != 'Action') {
             throw new Exception\CorruptedPdfException('Action dictionary Type entry must be set to \'Action\'.');
         }
 
@@ -193,8 +195,8 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      * Returns dictionary indirect object or reference
      *
      * @internal
-     * @param \ZendPdf\ObjectFactory $factory    Object factory for newly created indirect objects
-     * @param SplObjectStorage $processedActions  list of already processed actions
+     * @param \ZendPdf\ObjectFactory $factory Object factory for newly created indirect objects
+     * @param SplObjectStorage $processedActions list of already processed actions
      *                                            (used to prevent infinity loop caused by cyclic references)
      * @return \ZendPdf\InternalType\IndirectObject|\ZendPdf\InternalType\IndirectObjectReference
      */
@@ -212,7 +214,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
         if (count($this->_originalNextList) != count($this->next)) {
             // If original and current children arrays have different size then children list was updated
             $childListUpdated = true;
-        } elseif ( !(array_keys($this->_originalNextList) === array_keys($this->next)) ) {
+        } elseif (!(array_keys($this->_originalNextList) === array_keys($this->next))) {
             // If original and current children arrays have different keys (with a glance to an order) then children list was updated
             $childListUpdated = true;
         } else {
@@ -239,7 +241,6 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
                 default:
                     $pdfChildArray = new InternalType\ArrayObject();
                     foreach ($this->next as $child) {
-
                         $pdfChildArray->items[] = $child->dumpAction($factory, $processedActions);
                     }
                     $this->_actionDictionary->Next = $pdfChildArray;
@@ -270,17 +271,15 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return \ZendPdf\Action\AbstractAction
      */
-    public function current()
+    public function current(): mixed
     {
         return current($this->next);
     }
 
     /**
      * Returns current iterator key
-     *
-     * @return integer
      */
-    public function key()
+    public function key(): string|int|null
     {
         return key($this->next);
     }
@@ -288,7 +287,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
     /**
      * Go to next child
      */
-    public function next()
+    public function next(): mixed
     {
         return next($this->next);
     }
@@ -296,7 +295,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
     /**
      * Rewind children
      */
-    public function rewind()
+    public function rewind(): mixed
     {
         return reset($this->next);
     }
@@ -306,7 +305,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return boolean
      */
-    public function valid()
+    public function valid(): bool
     {
         return current($this->next) !== false;
     }
@@ -316,7 +315,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return \ZendPdf\Action\AbstractAction|null
      */
-    public function getChildren()
+    public function getChildren(): mixed
     {
         return current($this->next);
     }
@@ -326,7 +325,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return bool  whether container has any pages
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return count($this->next) > 0;
     }
@@ -341,7 +340,7 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->childOutlines);
     }
