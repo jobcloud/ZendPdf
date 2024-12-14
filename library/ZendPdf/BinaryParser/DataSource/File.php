@@ -12,7 +12,7 @@ namespace ZendPdf\BinaryParser\DataSource;
 
 use ZendPdf as Pdf;
 use ZendPdf\Exception;
-use Zend\Stdlib\ErrorHandler;
+use Laminas\Stdlib\ErrorHandler;
 
 /**
  * Concrete subclass of {@link \ZendPdf\BinaryParser\DataSource\AbstractDataSource}
