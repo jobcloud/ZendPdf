@@ -21,7 +21,6 @@
     ],
     "require": {
         "php": "^8.0",
-        "zendframework/zend-memory": ">=2.0.0",
         "laminas/laminas-stdlib": "^3.20"
     },
     "extra": {
