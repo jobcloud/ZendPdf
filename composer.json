@@ -21,6 +21,7 @@
     ],
     "require": {
         "php": "^8.0",
+        "laminas/laminas-memory": "^2.11.1",
         "laminas/laminas-stdlib": "^3.20"
     },
     "extra": {
