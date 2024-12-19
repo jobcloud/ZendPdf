@@ -10,7 +10,7 @@
 
 namespace ZendPdf;
 
-use Zend\Memory;
+use Laminas\Memory\MemoryManager;
 use ZendPdf\Exception;
 
 /**
@@ -131,12 +131,7 @@ class PdfDocument
      */
     protected $_objFactory = null;
 
-    /**
-     * Memory manager for stream objects
-     *
-     * @var \Zend\Memory\MemoryManager|null
-     */
-    protected static $_memoryManager = null;
+    protected static ?MemoryManager $_memoryManager = null;
 
     /**
      * PDF file parser.
@@ -154,26 +149,16 @@ class PdfDocument
      */
     protected static $_inheritableAttributes = array('Resources', 'MediaBox', 'CropBox', 'Rotate');
 
-    /**
-     * Request used memory manager
-     *
-     * @return Zend\Memory\MemoryManager
-     */
-    public static function getMemoryManager()
+    public static function getMemoryManager(): ?MemoryManager
     {
         if (self::$_memoryManager === null) {
-            self::$_memoryManager = new Memory\MemoryManager();
+            self::$_memoryManager = new MemoryManager();
         }
 
         return self::$_memoryManager;
     }
 
-    /**
-     * Set user defined memory manager
-     *
-     * @param Zend\Memory\MemoryManager $memoryManager
-     */
-    public static function setMemoryManager(Memory\MemoryManager $memoryManager)
+    public static function setMemoryManager(MemoryManager $memoryManager): void
     {
         self::$_memoryManager = $memoryManager;
     }
