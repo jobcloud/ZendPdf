@@ -52,7 +52,7 @@ class UpdateInfoContainer
     /**
      * Object constructor
      *
-     * @param integer $objCount
+     * @param integer $objNum
      */
     public function __construct($objNum, $genNum, $isFree, $dump = null)
     {

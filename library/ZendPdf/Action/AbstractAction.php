@@ -97,11 +97,11 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @throws \ZendPdf\Exception\ExceptionInterface
      * @param \ZendPdf\InternalType\AbstractTypeObject $dictionary (It's actually Dictionary or Dictionary Object or Reference to a Dictionary Object)
-     * @param SplObjectStorage $processedActions list of already processed action dictionaries, used to avoid cyclic references
+     * @param SplObjectStorage|null $processedActions list of already processed action dictionaries, used to avoid cyclic references
      * @return \ZendPdf\Action\AbstractAction
      * @internal
      */
-    public static function load(InternalType\AbstractTypeObject $dictionary, \SplObjectStorage $processedActions = null)
+    public static function load(InternalType\AbstractTypeObject $dictionary, ?\SplObjectStorage $processedActions = null)
     {
         if ($processedActions === null) {
             $processedActions = new \SplObjectStorage();
@@ -196,11 +196,11 @@ abstract class AbstractAction extends Pdf\InternalStructure\NavigationTarget imp
      *
      * @internal
      * @param \ZendPdf\ObjectFactory $factory Object factory for newly created indirect objects
-     * @param SplObjectStorage $processedActions list of already processed actions
+     * @param SplObjectStorage|null $processedActions list of already processed actions
      *                                            (used to prevent infinity loop caused by cyclic references)
      * @return \ZendPdf\InternalType\IndirectObject|\ZendPdf\InternalType\IndirectObjectReference
      */
-    public function dumpAction(ObjectFactory $factory, \SplObjectStorage $processedActions = null)
+    public function dumpAction(ObjectFactory $factory, ?\SplObjectStorage $processedActions = null)
     {
         if ($processedActions === null) {
             $processedActions = new \SplObjectStorage();
