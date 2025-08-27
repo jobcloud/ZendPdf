@@ -42,7 +42,7 @@ class TrueType extends AbstractCidFont
      */
     public function __construct(OpenTypeFontParser\TrueType $fontParser, $embeddingOptions)
     {
-        parent::__construct($fontParser, $embeddingOptions);
+        parent::__construct($fontParser);
 
         $this->_fontType = Pdf\Font::TYPE_CIDFONT_TYPE_2;
 

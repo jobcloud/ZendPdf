@@ -650,7 +650,7 @@ class Page
         if ($style->getFont() !== null) {
             $this->setFont($style->getFont(), $style->getFontSize());
         }
-        $this->_contents .= $style->instructions($this->_pageDictionary->Resources);
+        $this->_contents .= $style->instructions();
 
         return $this;
     }

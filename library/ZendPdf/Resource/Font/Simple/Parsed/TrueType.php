@@ -36,7 +36,7 @@ class TrueType extends AbstractParsed
      */
     public function __construct(OpenTypeFontParser\TrueType $fontParser, $embeddingOptions)
     {
-        parent::__construct($fontParser, $embeddingOptions);
+        parent::__construct($fontParser);
 
         $this->_fontType = Pdf\Font::TYPE_TRUETYPE;
 
