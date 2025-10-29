@@ -98,9 +98,9 @@ class Type0 extends AbstractFont
 
         $this->_fontNames    = $descendantFont->getFontNames();
 
-        $this->_isBold       = $descendantFont->isBold();
-        $this->_isItalic     = $descendantFont->isItalic();
-        $this->_isMonospaced = $descendantFont->isMonospace();
+        $this->_isBold      = $descendantFont->isBold();
+        $this->_isItalic    = $descendantFont->isItalic();
+        $this->_isMonospace = $descendantFont->isMonospace();
 
         $this->_underlinePosition  = $descendantFont->getUnderlinePosition();
         $this->_underlineThickness = $descendantFont->getUnderlineThickness();

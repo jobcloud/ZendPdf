@@ -11,7 +11,6 @@
 namespace ZendPdfTest\InternalType;
 
 use ZendPdf\InternalType;
-use ZendPdf as Pdf;
 
 /**
  * \ZendPdf\InternalType\ArrayObject

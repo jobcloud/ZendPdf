@@ -24,6 +24,9 @@
         "laminas/laminas-memory": "^2.11.1",
         "laminas/laminas-stdlib": "^3.20"
     },
+    "require-dev": {
+        "ext-dom": "*"
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "2.0.x-dev"
