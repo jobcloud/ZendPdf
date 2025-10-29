@@ -12,7 +12,6 @@ namespace ZendPdfTest\InternalType;
 
 use ZendPdf\InternalType;
 use ZendPdf\ObjectFactory;
-use ZendPdf as Pdf;
 
 /** \ZendPdf\InternalType\IndirectObject */
 

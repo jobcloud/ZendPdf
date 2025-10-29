@@ -9,7 +9,7 @@ Either build a vendor/autoloader.php that will load this components dependencies
 
 OR
 
-Install composer (http://getcomposer.org), and run the following
+Install composer (https://getcomposer.org), and run the following
 command in the root of this project:
 
     php /path/to/composer.phar install
