@@ -250,7 +250,7 @@ abstract class AbstractSimple extends FontResource\AbstractFont
             return $string; // returning here b/c AIX doesnt know what CP1252 is
         }
 
-        return iconv($charEncoding, 'CP1252//IGNORE', $string);
+        return mb_convert_encoding($string, 'CP1252', $charEncoding);
     }
 
     /**

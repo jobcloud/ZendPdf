@@ -340,7 +340,7 @@ class ObjectFactory
 
         $result = array();
         foreach ($this->_modifiedObjects as $objNum => $obj) {
-            if ($this->_removedObjects->contains($obj)) {
+            if ($this->_removedObjects->offsetExists($obj)) {
                             $result[$objNum+$shift] = new UpdateInfoContainer($objNum + $shift,
                                                                               $obj->getGenNum()+1,
                                                                               true);
