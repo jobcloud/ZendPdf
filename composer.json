@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": "^8.5",
-        "laminas/laminas-memory": "dev-chore/PRO-3271/PHP85-compatibility",
+        "laminas/laminas-memory": "^3.0.0",
         "laminas/laminas-stdlib": "^3.20"
     },
     "require-dev": {
