@@ -163,7 +163,7 @@ class Png extends AbstractImage
                     fseek($imageFile, 4, SEEK_CUR); //4 Byte Ending Sequence
                     break;
 
-                case 'IEND';
+                case 'IEND':
                     break 2; //End the loop too
 
                 default:
